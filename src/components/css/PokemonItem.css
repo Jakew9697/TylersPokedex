@@ -1,0 +1,13 @@
+/* This will apply to the card when hovering */
+.card:hover {
+    transform: scale(1.1);  /* Scales the card to 110% of its original size */
+    transition: transform 0.3s ease-in-out;  /* Smooth transition for the zoom effect */
+    cursor: pointer;
+  }
+  
+  /* Optional: You can add a box shadow or other effects to enhance the zoom effect */
+  .card {
+    transition: transform 0.3s ease-in-out;
+      /* Smooth transition for the card itself */
+  }
+  

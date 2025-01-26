@@ -1,0 +1,41 @@
+/* Center content inside the modal body */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text */
+    background-color: rgb(92, 92, 92);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+  }
+  
+  .pokemon-image {
+    width: 250px;
+    height: 250px;
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+
+  /* Style the entire modal */
+.modal-content {
+    background-color: rgb(146, 4, 4);  /* Replace with the color you want */
+    border-radius: 10px;  /* Optional: to round the corners */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);  /* Optional: add a shadow */
+  }
+  .modal-footer {
+    background-color: blue;
+  }
+button {
+    background-color: black;
+}
+.modal-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
