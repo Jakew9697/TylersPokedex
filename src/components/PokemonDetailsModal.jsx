@@ -2,15 +2,15 @@
 
 // import {Button, Row, Col, Modal} from 'react-bootstrap';
 import './css/PokemonDetailsModal.css';
-import React, { useState } from 'react';  // Import useState
+import { useState } from 'react';  // Import useState
 import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export default function PokemonDetailsModal({ show, handleClose, pokemon }) {
-  if (!pokemon) return null; // Return nothing if no pokemon is selected
-
   // State to track if shiny image is being shown
   const [isShiny, setIsShiny] = useState(false);
+
+  if (!pokemon) return null; // Return nothing if no pokemon is selected
 
   // Toggle the shiny state
   const handleToggleShiny = () => {
