@@ -1,24 +1,23 @@
 // this parent component fetches the pokemon (currently just the first 151 based on index) and maps over them to display each one in their card which is made in the pokemonitem.jsx component.
-
 import { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import PokemonItem from './PokemonItem';
 import PokemonDetailsModal from './PokemonDetailsModal';
 import React from 'react';
-//import PokemonCry from './PokemonCry'; //Eventually want to make it so that when you click on the pokemon sprite in the modal, it will play the audio for the pokemon's cry.
 
 export default function PokemonList() {
   const [pokemonList, setPokemonList] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState(null); // Store selected pokemon
-  const [showModal, setShowModal] = useState(false); // Controls modal visibility
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [isShiny, setIsShiny] = useState(false);
+  const [evolutionChain, setEvolutionChain] = useState([]);
 
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
         const data = await response.json();
-
-        // Fetch detailed data for each Pokémon
+        
         const detailedPokemon = await Promise.all(
           data.results.map(async (pokemon) => {
             const res = await fetch(pokemon.url);
@@ -35,16 +34,23 @@ export default function PokemonList() {
     fetchPokemonList();
   }, []);
 
-  // Function to show the modal with selected pokemon data
   const handleCardClick = (pokemon) => {
-    setSelectedPokemon(pokemon);  // Set selected pokemon
-    setShowModal(true);           // Show the modal
+    setSelectedPokemon(pokemon);
+    setIsShiny(false);  // Reset shiny state to show regular sprite
+    setShowModal(true);
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
-    setShowModal(false);          // Hide the modal
-    setSelectedPokemon(null);     // Clear selected pokemon
+    setShowModal(false);
+    setSelectedPokemon(null);
+  };
+
+  const resetShinyState = () => {
+    setIsShiny(false);  // Reset shiny state
+  };
+
+  const resetEvolutionChain = () => {
+    setEvolutionChain([]);  // Reset evolution chain
   };
 
   return (
@@ -54,17 +60,21 @@ export default function PokemonList() {
           <PokemonItem
             key={pokemon.id}
             pokemon={pokemon}
-            onCardClick={handleCardClick} // Pass the function to PokemonItem
+            onCardClick={handleCardClick}
           />
         ))}
       </Row>
 
       {/* Modal for Pokémon Details */}
       <PokemonDetailsModal
-        show={showModal}             // Control modal visibility
-        handleClose={handleCloseModal} // Function to close the modal
-        pokemon={selectedPokemon}   // Pass selected Pokémon data to the modal
+        show={showModal}
+        handleClose={handleCloseModal}
+        pokemon={selectedPokemon}
+        resetShinyState={resetShinyState}  // Pass reset function
+        resetEvolutionChain={resetEvolutionChain}  // Pass reset function
       />
     </Container>
   );
 }
+
+

@@ -1,41 +1,161 @@
 /* Center content inside the modal body */
 .modal-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* Center text */
-    background-color: rgb(92, 92, 92);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
-  }
-  
-  .pokemon-image {
-    width: 250px;
-    height: 250px;
-    object-fit: contain; /* Ensure the image maintains its aspect ratio */
-    margin-bottom: 20px;
-  }
-  
-  button {
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text */
+  background-color: rgb(92, 92, 92);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  padding: 20px;
+  overflow: visible;  /* Remove scrolling behavior here */
+}
+
+.pokemon-image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain; /* Ensure the image maintains its aspect ratio */
+  margin-bottom: -30px;
+}
+
+/* Style the entire modal */
+.modal-content {
+  background-color: rgb(146, 4, 4);  /* Replace with the color you want */
+  border-radius: 10px;  /* Optional: to round the corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);  /* Optional: add a shadow */
+  overflow: hidden; /* Prevent modal overflow */
+}
+
+button {
+  background-color: black;
+}
+
+.modal-title {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Shiny toggle switch styling */
+.shiny-toggle-switch {
+  margin-top: 20px;
+  color: white;
+}
+
+/* Evolution Line Styling */
+.evolution-line {
+  display: flex;
+  justify-content: start;  /* Aligns items to the start of the container */
+  flex-wrap: nowrap;  /* Prevents wrapping, making sure the evolution sprites are in one line */
+  align-items: center;  /* Centers the content vertically */
+  margin-top: 20px;
+  padding: 10px;
+  overflow: visible; /* Allow content to overflow without scrollbars */
+}
+
+.evolution-line, h5 {
+  padding-top: 10px;
+}
+
+.evolution-detail {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-right: -0px;  /* Adds spacing between evolution sprites */
+}
+
+.evolution-sprite {
+  width: 150px;  /* Size of the evolution sprites */
+  height: 150px; /* Size of the evolution sprites */
+  margin-bottom: 5px;
+}
+
+.evolution-arrow {
+  font-size: 50px; /* Size of the arrow */
+  font-weight: bold;
+  color: white;  /* White arrow */
+  display: inline-block;
+  margin: 0 -10px;  /* Space between sprites and arrows */
+}
+
+.evolution-sprite-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.evolution-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;  /* Center align the name and level text */
+}
+
+.evolution-name {
+  font-size: 22px;
+  text-transform: capitalize; /* Capitalize Pokémon name */
+  font-weight: bold;
+}
+
+.evolution-method {
+  font-size: 15px;
+  margin: -10px 0 -25px 0; /* Adjust the margin as needed */
+  font-style: italic;
+}
+
+/* Adjusting evolution branch containers */
+.evolution-branch {
+  margin-bottom: 20px;
+}
+
+.evolution-branch h6 {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.modal-dialog {
+  width: 95vw; /* Increase to 95% of viewport width */
+  max-width: 95vw; /* Set maximum width to 95% of the viewport */
+  margin: 30px auto;
+  height: auto; /* Let the height grow as needed */
+}
+
+
+.modal-content {
+  border-radius: 10px; /* Optional: for rounded corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Optional: add a shadow */
+}
+
+.modal-body {
+  overflow: visible;
+  padding: 20px; /* Add some padding for content spacing */
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    width: 100%; /* Ensure modal takes up full screen width on small screens */
+    max-width: 100%;
   }
 
-  /* Style the entire modal */
-.modal-content {
-    background-color: rgb(146, 4, 4);  /* Replace with the color you want */
-    border-radius: 10px;  /* Optional: to round the corners */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);  /* Optional: add a shadow */
+  .evolution-sprite {
+    width: 100px;
+    height: 100px;
   }
-  .modal-footer {
-    background-color: blue;
-  }
-button {
-    background-color: black;
-}
-.modal-title {
-    text-align: center;
-    justify-content: center;
+
+  .evolution-line {
+    display: flex;
+    justify-content: center;  /* Center the evolution sprites */
+    flex-wrap: nowrap;  /* Keep sprites in one line for larger screens */
     align-items: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    padding: 10px;
+    overflow: visible;
+    width: 100%;  /* Ensure the container takes full width */
+  }
 }
