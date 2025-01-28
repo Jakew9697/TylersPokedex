@@ -3,5 +3,30 @@
 }
 .app-container h1 {
   color: white;
-  
+}
+/* Ensure the background color is applied to the whole page */
+html, body {
+  height: 100%; /* Ensure the body covers the entire page */
+  margin: 0; /* Remove default margin */
+}
+
+.app-container {
+  background: rgb(85, 85, 85);  /* Solid background */
+  min-height: 100vh; /* Ensure the container takes full viewport height */
+}
+
+.app-container h1 {
+  color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 50px;  /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  margin-right: 15px; /* Space between the image and the heading */
 }
